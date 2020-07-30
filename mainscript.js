@@ -24,6 +24,10 @@ cityForm.addEventListener('submit', e=>{
       console.log(error.message);
    });
 
+    //set local storage
+
+   localStorage.setItem('city', city)
+
 
 })
 
@@ -38,7 +42,24 @@ const updateCity = async (randomcity)=>{
 
    };
 
+   
+
 }
+
+
+
+//Leveraging on the set local storage city item to always update the last city by default if that makes sense to you visitor hopefilly.
+if(localStorage.getItem('city')){
+   updateCity(localStorage.getItem('city'))
+   .then(data=>{
+      updateUI(data);
+   })
+   .catch(err=>{
+      console.log(err.message);
+   })
+};
+
+
 
 const updateUI=(data)=>{
    //collecting and assigning data
